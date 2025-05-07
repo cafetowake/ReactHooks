@@ -19,6 +19,11 @@ function Stopwatch() {
   );
 
   const toggleRunning = () => setRunning((seg) => !seg);
+  
+  const resetTime = () => {
+    setRunning(false);
+    setTime(0);
+  };
 
   const saveSession = () => {
     setSessions((prev) => [...prev, time]);
@@ -33,6 +38,7 @@ function Stopwatch() {
         <button onClick={toggleRunning}>
           {running ? "Pausar" : "Iniciar"}
         </button>
+        <button onClick={resetTime}>Reiniciar</button>
         <button onClick={saveSession}>Guardar Sesión</button>
       </div>
       
