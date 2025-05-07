@@ -1,6 +1,8 @@
 const UserSearch = () => {
+    
     const [searchTerm, setSearchTerm] = React.useState("");
-    const [users] = React.useState([
+
+    const [users, setUsers] = React.useState([
         {
             name: "Michael Scott",
             description: "Me gusta hacer impersonaciones de Austin Powers y ser el mejor jefe del mundo"
@@ -19,6 +21,10 @@ const UserSearch = () => {
         }
     ]);
 
+    const [newUserName, setNewUserName] = React.useState("");
+
+    const [newUserDesc, setNewUserDesc] = React.useState("");
+
     const filteredUsers = React.useMemo(() => {
         console.log("Recalculando filtro...");
         return users.filter(user => 
@@ -27,7 +33,17 @@ const UserSearch = () => {
         );
     }, [searchTerm, users]);
 
-
+    const addUser = (e) => {
+        e.preventDefault();
+        if (!newUserName || !newUserDesc) return;
+        
+        setUsers([...users, {
+            name: newUserName,
+            description: newUserDesc
+        }]);
+        setNewUserName("");
+        setNewUserDesc("");
+    };
 
     return (
         <div className="container">
@@ -41,6 +57,25 @@ const UserSearch = () => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </div>
+
+            <form onSubmit={addUser} className="add-user">
+                <h2>Añadir nuevo personaje</h2>
+                <input
+                    type="text"
+                    placeholder="Nombre"
+                    value={newUserName}
+                    onChange={(e) => setNewUserName(e.target.value)}
+                    required
+                />
+                <input
+                    type="text"
+                    placeholder="Descripción"
+                    value={newUserDesc}
+                    onChange={(e) => setNewUserDesc(e.target.value)}
+                    required
+                />
+                <button type="submit">Agregar</button>
+            </form>
 
             <div className="user-list">
                 <h2>Personajes ({filteredUsers.length})</h2>
