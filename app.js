@@ -2,6 +2,7 @@ function Stopwatch() {
     
   const [time, setTime] = React.useState(0);
   const [running, setRunning] = React.useState(false);
+  const [sessions, setSessions] = React.useState([]);
   const intervalRef = React.useRef(null);
 
   React.useEffect(
@@ -17,7 +18,10 @@ function Stopwatch() {
     return () => clearInterval(intervalRef.current);}, [running]
   );
 
-  const toggleRunning = () => setRunning(!running);
+  const toggleRunning = () => setRunning((seg) => !seg);
+
+
+
 
   return (
     <div className="container">
@@ -25,7 +29,7 @@ function Stopwatch() {
       <div className="time">{time}s</div>
       <div className="buttons">
         <button onClick={toggleRunning}>
-          {"Iniciar"}
+          {running ? "Pausar" : "Iniciar"}
         </button>
       </div>
     </div>
