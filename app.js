@@ -1,5 +1,21 @@
 const ThemeContext = React.createContext();
 
+function ThemeProvider({ children }) {
+    const [theme, setTheme] = React.useState('light');
+    
+    const toggleTheme = () => {
+        setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    };
+    
+    return (
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+            <div className={theme}>
+                {children}
+            </div>
+        </ThemeContext.Provider>
+    );
+}
+
 function App() { 
 
         return (
