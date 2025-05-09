@@ -12,6 +12,8 @@ function CartaElementos() {
       <h2>Carta de Elementos</h2>
       <p><strong>Número aleatorio:</strong> {randomNumber}</p>
       <p><strong>Contador:</strong> {counter}</p>
+
+      <button>Generar número aleatorio</button>
       <BotonNormal onClick={addCounter} />
     </div>
   );
