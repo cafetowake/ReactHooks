@@ -1,14 +1,19 @@
-function App() {
+const ThemeContext = React.createContext();
 
-    return (
+function App() { 
 
-            <div className="app">
-                <h1>Selector claro o oscuro</h1>
-                <ThemeDisplay />
-                <ThemeToggle />
-            </div>
-    );
+        return (
+            <ThemeProvider>
+                <div className="app">
+                    <h1>Selector claro o oscuro</h1>
+                    <ThemeDisplay />
+                    <ThemeToggle />
+                </div>
+            </ThemeProvider>
+        );
 }
+
+
 
 function ThemeToggle() {
     return (
