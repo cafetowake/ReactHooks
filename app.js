@@ -1,15 +1,24 @@
 function CartaElementos() {
 
-  const [counter] = React.useState(0);
+  const [counter, setCounter] = React.useState(0);
+  
+  const addCounter = () => {
+    console.log("Incrementando contador");
+    setCounter(prev => prev + 1);
+  };
 
   return (
     <div className="carta-elementos">
       <h2>Carta de Elementos</h2>
       <p><strong>Contador:</strong> {counter}</p>
-      <button>Aumentar contador</button>
+      <BotonNormal onClick={addCounter} />
     </div>
   );
 }
+const BotonNormal = ({ onClick }) => {
+  console.log("BotonNormal renderizado");
+  return <button onClick={onClick}>Aumentar contador</button>;
+};
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
