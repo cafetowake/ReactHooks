@@ -6,6 +6,7 @@ function CartaElementos() {
     <div className="carta-elementos">
       <h2>Carta de Elementos</h2>
       <p><strong>Contador:</strong> {counter}</p>
+      <button>Aumentar contador</button>
     </div>
   );
 }
