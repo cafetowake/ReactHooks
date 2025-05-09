@@ -5,10 +5,18 @@ function App() {
             <div className="app">
                 <h1>Selector claro o oscuro</h1>
                 <ThemeDisplay />
+                <ThemeToggle />
             </div>
     );
 }
 
+function ThemeToggle() {
+    return (
+        <button className="theme-button">
+            Cambiar Tema
+        </button>
+    );
+}
 
 function ThemeDisplay() {
     return (
