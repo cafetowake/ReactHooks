@@ -29,21 +29,21 @@ function App() {
         );
 }
 
-
-
-function ThemeToggle() {
+function ThemeDisplay() {
+    const { theme } = React.useContext(ThemeContext);
     return (
-        <button className="theme-button">
-            Cambiar Tema
-        </button>
+        <div className="theme-display">
+            Tema actual: {theme === 'light' ? '🌞 Claro' : '🌚 Oscuro'}
+        </div>
     );
 }
 
-function ThemeDisplay() {
+function ThemeToggle() {
+    const { toggleTheme } = React.useContext(ThemeContext);
     return (
-        <div className="theme-display">
-            Tema actual: 🌞 Claro o 🌚 Oscuro
-        </div>
+        <button onClick={toggleTheme} className="theme-button">
+            Cambiar Tema
+        </button>
     );
 }
 
